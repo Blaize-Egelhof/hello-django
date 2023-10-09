@@ -1,0 +1,1 @@
+web: gunicorn django_tod0.wsgi:application
