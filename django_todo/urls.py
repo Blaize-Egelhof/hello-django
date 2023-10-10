@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from todo.views import get_todo_list , add_item
-#Remeber this .py file is used to do something once our domain URL changes, the URL MUST CHANGE to execute , this is usually done in HTML 
+from todo import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', get_todo_list, name = "get_todo_list"), # '' means that its basically activated immeditaly as soon as base url is given, so its our home page :)
-    path('add/', add_item, name = "add_item")
+    path('', views.get_todo_list, name='get_todo_list'),
+    path('add', views.add_item, name='add'),
+    path('edit/<item_id>', views.edit_item, name = 'edit'),
+    path('toggle/<item_id>', views.toggle_item, name = 'toggle'),
+    path('delete/<item_id>', views.delete_item, name='delete'),
 ]
